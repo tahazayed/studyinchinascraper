@@ -9,7 +9,7 @@ import scrapy
 from scrapy.conf import settings
 from scrapy.exceptions import DropItem
 import logging
-from studyinchina.items import RecipeItem,RecipeURLItem
+from studyinchina.items import ScholarshipItem,RecipeURLItem
         
 class MongoDBPipeline(object):
 
@@ -23,7 +23,7 @@ class MongoDBPipeline(object):
         for data in item:
             if not data:
                 raise DropItem("Missing data!")
-        if isinstance(item, RecipeItem):      
+        if isinstance(item, ScholarshipItem):      
            self.db[settings['MONGODB_COLLECTION_RECIPES']].update({'rcpe_id': item['rcpe_id']}, dict(item), upsert=True)
            if settings['LOG_LEVEL'] == 'DEBUG':
               spider.logger.debug("{} added to MongoDB database!".format(item['rcpe_id']))

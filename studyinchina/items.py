@@ -8,24 +8,20 @@
 from scrapy import Item, Field
 
 
-class RecipeItem(Item):
+class ScholarshipItem(Item):
     # define the fields for your item here like:
-    n = Field()
-    src = Field()
-    rcpe_id = Field()
-    ingrd = Field()
-    instrct = Field()
-    img = Field()
-    auth = Field()
-    tags = Field()
-    likes = Field()
-    pub = Field()
-    etag = Field()
-    desc = Field()
+    University = Field()
+    Program = Field()
+    Degree = Field()
+    Duration = Field()
+    Instruction_Language = Field()
+    uition_Fee_RMB = Field()
+    Starting_Date = Field()
+    Application_Deadline = Field()
     pass
 
 class RecipeURLItem(Item):
     # define the fields for your item here like:
     url = Field()
-    title = Field()	
+    title = Field()    
     pass

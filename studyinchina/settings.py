@@ -13,10 +13,10 @@ BOT_NAME = 'studyinchina'
 
 SPIDER_MODULES = ['studyinchina.spiders']
 NEWSPIDER_MODULE = 'studyinchina.spiders'
-LOG_LEVEL= 'ERROR'
+LOG_LEVEL= 'DEBUG'
 #LOG_FILE='studyinchina.log'
 
-ITEM_PIPELINES = {'studyinchina.pipelines.MongoDBPipeline':300}
+#ITEM_PIPELINES = {'studyinchina.pipelines.MongoDBPipeline':300}
 
 MONGODB_SERVER = "ds127321.mlab.com"
 MONGODB_PORT = 27321
@@ -31,11 +31,10 @@ MONGODB_PASSWORD = "dodido_2008"
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = False
-DOWNLOADER_MIDDLEWARES = {
-            'scrapy.downloadermiddlewares.cookies.CookiesMiddleware': 300 }
+DOWNLOADER_MIDDLEWARES = {'scrapy.downloadermiddlewares.cookies.CookiesMiddleware': 300 }
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
-CONCURRENT_REQUESTS = 1
+#CONCURRENT_REQUESTS = 1
 
 # Configure a delay for requests for the same website (default: 0)
 # See http://scrapy.readthedocs.org/en/latest/topics/settings.html#download-delay
@@ -52,15 +51,12 @@ COOKIES_DEBUG = False
 #TELNETCONSOLE_ENABLED = False
 
 # Override the default request headers:
-DEFAULT_REQUEST_HEADERS = {
-    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36',
-    'Referer': 'https://studyinchina.com/eg/%D9%88%D8%B5%D9%81%D8%A7%D8%AA',
-    'Turbolinks-Referrer': 'https://studyinchina.com/eg/%D9%88%D8%B5%D9%81%D8%A7%D8%AA',
-    'X-Turbolinks-Request': 'true',
-    'Accept': 'text/html, application/xhtml+xml',
-    'Accept-Encoding': 'gzip, deflate, sdch, br',
-    'Accept-Language': 'en-US,en;q=0.8,ar;q=0.6'
-}
+#DEFAULT_REQUEST_HEADERS = {
+#    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.96 Safari/537.36',
+#    'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+#    'Accept-Encoding': 'gzip, deflate, sdch, br',
+#    'Accept-Language': 'en-US,en;q=0.8,ar;q=0.6'
+#}
 
 # Enable or disable spider middlewares
 # See http://scrapy.readthedocs.org/en/latest/topics/spider-middleware.html
