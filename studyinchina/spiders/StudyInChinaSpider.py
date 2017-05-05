@@ -25,22 +25,26 @@ class StudyInChinaSpider(scrapy.Spider):
         scholarships = Selector(response).xpath('//div[@class="zy_list blue"]')
         print(len(scholarships))
         for scholarship in scholarships:
-		
+        
             item = ScholarshipItem()
 
             item['University'] = scholarship.xpath(
                 'div[@class="mingcheng"]/a/text()').extract()[0]
-			starred = ''
-			try:
-			    starred=scholarship.xpath(
+            starred = ''
+            try:
+                starred=scholarship.xpath(
                 'div[@class="zhuanye"]/font[@class="font-red"]/text()').extract()[0]
-			except:
-                pass			
-			
+            except:
+                pass            
+            
             item['Program'] = starred + scholarship.xpath(
                 'div[@class="zhuanye"]/text()').extract()[0]
-            item['Degree'] = scholarship.xpath(
+            try:
+                item['Degree'] = scholarship.xpath(
                 'div[@class="degree"]/text()').extract()[0]
+            except:
+                item['Degree'] = ''
+                pass            
             item['Duration'] = scholarship.xpath(
                 'div[@class="xuezhi"]/text()').extract()[0]
             item['Instruction_Language'] = scholarship.xpath(
