@@ -4,5 +4,5 @@ git push
 
 @echo delpoy heroku
 rem git push heroku master
-
+rem scrapy crawl studyinchinaspider -t xml -o results.xls
 pause

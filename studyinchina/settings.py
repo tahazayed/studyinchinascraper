@@ -14,7 +14,7 @@ BOT_NAME = 'studyinchina'
 SPIDER_MODULES = ['studyinchina.spiders']
 NEWSPIDER_MODULE = 'studyinchina.spiders'
 LOG_LEVEL= 'DEBUG'
-#LOG_FILE='studyinchina.log'
+LOG_FILE='studyinchina.log'
 
 #ITEM_PIPELINES = {'studyinchina.pipelines.MongoDBPipeline':300}
 

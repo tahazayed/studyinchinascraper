@@ -23,7 +23,7 @@ class StudyInChinaSpider(scrapy.Spider):
 
     def parse(self, response):
         scholarships = Selector(response).xpath('//div[@class="zy_list blue"]')
-        print(len(scholarships))
+
         for scholarship in scholarships:
         
             item = ScholarshipItem()
