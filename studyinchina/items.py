@@ -6,22 +6,18 @@
 # http://doc.scrapy.org/en/latest/topics/items.html
 
 from scrapy import Item, Field
-
+from collections import OrderedDict
+import six
 
 class ScholarshipItem(Item):
-    # define the fields for your item here like:
     University = Field()
     Program = Field()
     Degree = Field()
     Duration = Field()
     Instruction_Language = Field()
-    uition_Fee_RMB = Field()
+    Tuition_Fee_RMB = Field()
     Starting_Date = Field()
     Application_Deadline = Field()
     pass
-
-class RecipeURLItem(Item):
-    # define the fields for your item here like:
-    url = Field()
-    title = Field()    
-    pass
+    
+ 

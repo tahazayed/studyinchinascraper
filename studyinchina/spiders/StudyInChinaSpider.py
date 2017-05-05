@@ -25,27 +25,28 @@ class StudyInChinaSpider(scrapy.Spider):
         scholarships = Selector(response).xpath('//div[@class="zy_list blue"]')
         print(len(scholarships))
         for scholarship in scholarships:
+		
             item = ScholarshipItem()
 
             item['University'] = scholarship.xpath(
-                'div[@class="mingcheng"]/a/text()').extract()
+                'div[@class="mingcheng"]/a/text()').extract()[0]
             item['Program'] = scholarship.xpath(
-                'div[@class="zhuanye"]/text()').extract()
+                'div[@class="zhuanye"]/text()').extract()[0]
             item['Degree'] = scholarship.xpath(
-                'div[@class="degree"]/text()').extract()
+                'div[@class="degree"]/text()').extract()[0]
             item['Duration'] = scholarship.xpath(
-                'div[@class="xuezhi"]/text()').extract()
+                'div[@class="xuezhi"]/text()').extract()[0]
             item['Instruction_Language'] = scholarship.xpath(
-                'div[@class="yuyan"]/text()').extract()
-            item['uition_Fee_RMB'] = scholarship.xpath(
-                'div[@class="xuefei"]/text()').extract()
+                'div[@class="yuyan"]/text()').extract()[0]
+            item['Tuition_Fee_RMB'] = scholarship.xpath(
+                'div[@class="xuefei"]/text()').extract()[0]
             item['Starting_Date'] = scholarship.xpath(
-                'div[@class="rx_date"]/text()').extract()
+                'div[@class="rx_date"]/text()').extract()[0]
             item['Application_Deadline'] = scholarship.xpath(
-                'div[@class="sq_date"]/text()').extract()
-               
+                'div[@class="sq_date"]/text()').extract()[0]
+            
             yield item
-			
+            
         if len(scholarships)>0:
             self.pageid = self.pageid + 1    
             next_page = self.base_url % self.pageid
@@ -53,6 +54,10 @@ class StudyInChinaSpider(scrapy.Spider):
 
     def errback(self, response):
         pass
+
+"""            
+
+"""
 
 """
 #configure_logging()
