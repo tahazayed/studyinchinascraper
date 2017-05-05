@@ -89,7 +89,7 @@ class StudyInChinaSpider(scrapy.Spider):
                 
             yield item
             
-        if self.pageid < self.max_pageid:
+        if self.pageid <= self.max_pageid:
             self.pageid = self.pageid + 1    
             next_page = self.base_url % self.pageid
             yield scrapy.Request(url=next_page, callback=self.parse,meta={'dont_merge_cookies': False},dont_filter=True,encoding='utf-8',errback=self.errback)    
