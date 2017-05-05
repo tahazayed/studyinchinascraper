@@ -27,35 +27,62 @@ class StudyInChinaSpider(scrapy.Spider):
         for scholarship in scholarships:
         
             item = ScholarshipItem()
-
-            item['University'] = scholarship.xpath(
-                'div[@class="mingcheng"]/a/text()').extract()[0]
+            try:
+                item['University'] = scholarship.xpath('div[@class="mingcheng"]/a/text()').extract()[0]
+            except:
+                item['University'] = ''
+                pass
+                
             starred = ''
             try:
-                starred=scholarship.xpath(
-                'div[@class="zhuanye"]/font[@class="font-red"]/text()').extract()[0]
+                starred=scholarship.xpath('div[@class="zhuanye"]/font[@class="font-red"]/text()').extract()[0]
             except:
-                pass            
-            
-            item['Program'] = starred + scholarship.xpath(
+                pass 
+                
+            try:
+                item['Program'] = starred + scholarship.xpath(
                 'div[@class="zhuanye"]/text()').extract()[0]
+            except:
+                item['Program'] = ''
+                pass  
+                
             try:
                 item['Degree'] = scholarship.xpath(
                 'div[@class="degree"]/text()').extract()[0]
             except:
                 item['Degree'] = ''
-                pass            
-            item['Duration'] = scholarship.xpath(
-                'div[@class="xuezhi"]/text()').extract()[0]
-            item['Instruction_Language'] = scholarship.xpath(
-                'div[@class="yuyan"]/text()').extract()[0]
-            item['Tuition_Fee_RMB'] = scholarship.xpath(
-                'div[@class="xuefei"]/text()').extract()[0]
-            item['Starting_Date'] = scholarship.xpath(
-                'div[@class="rx_date"]/text()').extract()[0]
-            item['Application_Deadline'] = scholarship.xpath(
-                'div[@class="sq_date"]/text()').extract()[0]
+                pass
+                
+            try:                
+                item['Duration'] = scholarship.xpath('div[@class="xuezhi"]/text()').extract()[0]
+            except:
+                item['Duration'] = ''
+                pass
             
+            try:            
+                item['Instruction_Language'] = scholarship.xpath('div[@class="yuyan"]/text()').extract()[0]
+            except:
+                item['Instruction_Language'] = ''
+                pass
+
+            try:                
+               item['Tuition_Fee_RMB'] = scholarship.xpath('div[@class="xuefei"]/text()').extract()[0]
+            except:
+                item['Tuition_Fee_RMB'] = ''
+                pass
+
+            try:                
+                item['Starting_Date'] = scholarship.xpath('div[@class="rx_date"]/text()').extract()[0]
+            except:
+                item['Starting_Date'] = ''
+                pass
+
+            try:
+                item['Application_Deadline'] = scholarship.xpath('div[@class="sq_date"]/text()').extract()[0]
+            except:
+                item['Application_Deadline'] = ''
+                pass
+                
             yield item
             
         if len(scholarships)>0:
