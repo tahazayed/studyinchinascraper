@@ -16,8 +16,9 @@ class StudyInChinaSpider(scrapy.Spider):
     name = "studyinchinaspider"
     allowed_domains = ["www.csc.edu.cn"]
     base_url = 'http://www.csc.edu.cn/studyinchina/programsearchen.aspx?PageNo=%s'
-    start_urls = [base_url % 1]
-    pageid = 1
+    pageid = 1524
+    start_urls = [base_url % pageid]
+
 
     
 
